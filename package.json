@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  },
+  "scripts": {
+    "eslint:init": "eslint --init",
+    "eslint:check": "eslint \"./**/*.js\"",
+    "eslint:fix": "eslint \"./**/*.js\" --fix"
+  }
+}
