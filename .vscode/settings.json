@@ -2,14 +2,17 @@
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": true,
   "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
