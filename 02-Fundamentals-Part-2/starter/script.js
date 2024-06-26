@@ -86,22 +86,143 @@
 
 ///////////////////////////////////////
 // Reviewing Functions
-const calcAge = function (birthYeah) {
-  return 2037 - birthYeah;
-}
+// const calcAge = function (birthYeah) {
+//   return 2037 - birthYeah;
+// }
 
-const yearsUntilRetirement = function (birthYeah, firstName) {
-  const age = calcAge(birthYeah);
-  const retirement = 65 - age;
+// const yearsUntilRetirement = function (birthYeah, firstName) {
+//   const age = calcAge(birthYeah);
+//   const retirement = 65 - age;
 
-  if (retirement > 0) {
-    console.log(`${firstName} retires in ${retirement} years`);
-    return retirement;
-  } else {
-    console.log(`${firstName} has already retired 🎉`);
-    return -1;
+//   if (retirement > 0) {
+//     console.log(`${firstName} retires in ${retirement} years`);
+//     return retirement;
+//   } else {
+//     console.log(`${firstName} has already retired 🎉`);
+//     return -1;
+//   }
+// }
+
+// console.log(yearsUntilRetirement(1991, 'Jonas'));
+// console.log(yearsUntilRetirement(1950, 'Mike'));
+
+// const calcAverage = (a, b, c) => (a + b + c) / 3;
+// console.log(calcAverage);
+
+// const scoreDolphins = calcAverage(44, 23, 71);
+// const scoreKoalas = calcAverage(65, 54, 49);
+// console.log(`scoreDolphins :${scoreDolphins} , scoreKoalas :${scoreKoalas}`);
+
+// const checkWinner = function (avgDolphins, avgKoalas) {
+//   if (avgDolphins >= 2 * avgKoalas) {
+//     console.log(`Dolphins win 🏆 (${avgDolphins} vs. ${avgKoalas})`);
+//   } else if (avgKoalas >= 2 * avgDolphins) {
+//     console.log(`Koalas win 🏆 (${avgKoalas} vs. ${avgDolphins})`);
+//   } else {
+//     console.log('No team wins...');
+//   }
+// }
+// checkWinner(scoreDolphins, scoreKoalas);
+
+// checkWinner(576, 111);
+///////////////////////////////////////
+// Introduction to Arrays
+// const friend1 = 'Michael';
+// const friend2 = 'Steven';
+// const friend3 = 'Peter';
+
+// const friends = ['Michael', 'Steven', 'Peter'];
+// console.log(friends);
+
+// const years = new Array(1991, 1984, 2008, 2020);
+
+// console.log(friends[0]);
+// console.log(friends[2]);
+
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = 'Jay';
+// console.log(friends);
+// // friends = ['Bob', 'Alice']
+
+// const firstName = 'Jonas';
+// const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+// console.log(jonas);
+// console.log(jonas.length);
+
+// Exercise
+// const calcAge = function (birthYeah) {
+//   return 2037 - birthYeah;
+// }
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
+// console.log(ages);
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtmann',
+  birthYeah: 2037 - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  hasDrivesLicensense: true,
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYeah;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDrivesLicensense ? 'a' : 'no'} driver's license.`
   }
-}
+};
 
-console.log(yearsUntilRetirement(1991, 'Jonas'));
-console.log(yearsUntilRetirement(1950, 'Mike'));
+console.log(jonas);
+
+console.log(jonas.calcAge());
+console.log(jonas.calcAge());
+console.log(jonas.calcAge());
+console.log(jonas.calcAge());
+
+// const mark = {
+//   fullName: 'Mark Miller',
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   }
+// };
+
+// const john = {
+//   fullName: 'John Smith',
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI: function () {
+//     this.bmi = this.mass / this.height ** 2;
+//     return this.bmi;
+//   }
+// };
+
+// mark.calcBMI();
+// john.calcBMI();
+
+// console.log(mark.bmi, john.bmi)
+
+// if (mark.bmi > john.bmi) {
+//   console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`)
+// } else if (john.bmi > mark.bmi) {
+//   console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`)
+// }
+
+
+// for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 30; rep++) {
+//   console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+// }
