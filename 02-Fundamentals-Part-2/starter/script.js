@@ -228,55 +228,87 @@
 // }
 
 // Introduction to Objects
+
+/* i-- */
+
 const jonasArray = [
   'Jonas',
   'Schmedtmann',
   2037 - 1991,
   'teacher',
-  ['Michael', 'Peter', 'Steven']
+  ['Michael', 'Peter', 'Steven'],
+  true
 ];
 
-const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
-  age: 2037 - 1991,
-  job: 'teacher',
-  friends: ['Michael', 'Peter', 'Steven'],
-  location: ['Taiwan']
-};
-
-console.log(jonas);
-console.log(jonas.lastName);
-console.log(jonas['lastName']);
-
-const nameKey = 'Name';
-console.log(jonas['first' + nameKey]);
-console.log(jonas['last' + nameKey]);
-
-const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends');
-console.log(jonas[interestedIn])
-
-jonas.location = 'Portugal';
-jonas['twitter'] = '@jonasschmedtman';
-
-if (jonas.interestedIn) {
-  console.log((jonas.interestedIn));
-} else {
-  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+  console.log(i, jonasArray[i]);
 }
 
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`--------- Starting exercise ${exercise}`);
 
-console.log(jonas);
-
-
-console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
-
-
-const types = [];
-
-for (let i = 0; i < jonas.length; i++) {
-  console.log(jonas[i], typeof jonas[i]);
-  types.push(typeof jonas[i]);
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋🏻‍♂️`);
+  }
 }
+
+/* CONTINUE AND BREAK */
+
+// const types = [];
+// console.log(types);
+
+// console.log('--- ONLY STRINGS ---')
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] !== 'string') continue;
+
+//   console.log(jonasArray[i], typeof jonasArray[i]);
+//   types.push(typeof jonasArray[i]);
+// }
+
+// console.log('--- BREAK WITH NUMBER ---')
+// for (let i = 0; i < jonasArray.length; i++) {
+//   if (typeof jonasArray[i] === 'number') break;
+
+//   console.log(jonasArray[i], typeof jonasArray[i]);
+// }
+
+
 
 // console.log(types);
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtmann',
+//   age: 2037 - 1991,
+//   job: 'teacher',
+//   friends: ['Michael', 'Peter', 'Steven'],
+//   location: ['Taiwan']
+// };
+
+// console.log(jonas);
+// console.log(jonas.lastName);
+// console.log(jonas['lastName']);
+
+// const nameKey = 'Name';
+// console.log(jonas['first' + nameKey]);
+// console.log(jonas['last' + nameKey]);
+
+// const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends');
+// console.log(jonas[interestedIn])
+
+// jonas.location = 'Portugal';
+// jonas['twitter'] = '@jonasschmedtman';
+
+// if (jonas.interestedIn) {
+//   console.log((jonas.interestedIn));
+// } else {
+//   console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
+// }
+
+
+// console.log(jonas);
+
+
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
