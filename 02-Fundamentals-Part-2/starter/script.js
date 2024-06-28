@@ -165,30 +165,30 @@
 // const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
 // console.log(ages);
 
-const jonas = {
-  firstName: 'Jonas',
-  lastName: 'Schmedtmann',
-  birthYeah: 2037 - 1991,
-  job: 'teacher',
-  friends: ['Michael', 'Peter', 'Steven'],
-  hasDrivesLicensense: true,
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtmann',
+//   birthYeah: 2037 - 1991,
+//   job: 'teacher',
+//   friends: ['Michael', 'Peter', 'Steven'],
+//   hasDrivesLicensense: true,
 
-  calcAge: function () {
-    this.age = 2037 - this.birthYeah;
-    return this.age;
-  },
+//   calcAge: function () {
+//     this.age = 2037 - this.birthYeah;
+//     return this.age;
+//   },
 
-  getSummary: function () {
-    return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDrivesLicensense ? 'a' : 'no'} driver's license.`
-  }
-};
+//   getSummary: function () {
+//     return `${this.firstName} is a ${this.calcAge()}-year old ${jonas.job}, and he has ${this.hasDrivesLicensense ? 'a' : 'no'} driver's license.`
+//   }
+// };
 
-console.log(jonas);
+// console.log(jonas);
 
-console.log(jonas.calcAge());
-console.log(jonas.calcAge());
-console.log(jonas.calcAge());
-console.log(jonas.calcAge());
+// console.log(jonas.calcAge());
+// console.log(jonas.calcAge());
+// console.log(jonas.calcAge());
+// console.log(jonas.calcAge());
 
 // const mark = {
 //   fullName: 'Mark Miller',
@@ -226,3 +226,57 @@ console.log(jonas.calcAge());
 // for (let rep = 1; rep <= 30; rep++) {
 //   console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
 // }
+
+// Introduction to Objects
+const jonasArray = [
+  'Jonas',
+  'Schmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven']
+];
+
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtmann',
+  age: 2037 - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  location: ['Taiwan']
+};
+
+console.log(jonas);
+console.log(jonas.lastName);
+console.log(jonas['lastName']);
+
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends');
+console.log(jonas[interestedIn])
+
+jonas.location = 'Portugal';
+jonas['twitter'] = '@jonasschmedtman';
+
+if (jonas.interestedIn) {
+  console.log((jonas.interestedIn));
+} else {
+  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends')
+}
+
+
+console.log(jonas);
+
+
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
+const types = [];
+
+for (let i = 0; i < jonas.length; i++) {
+  console.log(jonas[i], typeof jonas[i]);
+  types.push(typeof jonas[i]);
+}
+
+// console.log(types);
