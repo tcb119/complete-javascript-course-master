@@ -249,14 +249,14 @@ Math.trunc 是去掉小數值
 Math.random() 會出現0-1之間得數字
 */
 
-let dice = Math.trunc(Math.random() * 6) + 1;
-console.log(dice);
+// let dice = Math.trunc(Math.random() * 6) + 1;
+// console.log(dice);
 
-while (dice !== 6) {
-  console.log(`You rolled a ${dice}`);
-  dice = Math.trunc(Math.random() * 6) + 1;
-  if (dice === 6) console.log('Loop is about to end...');
-}
+// while (dice !== 6) {
+//   console.log(`You rolled a ${dice}`);
+//   dice = Math.trunc(Math.random() * 6) + 1;
+//   if (dice === 6) console.log('Loop is about to end...');
+// }
 
 /* for迴圈 與槽狀使用 */
 
@@ -341,3 +341,28 @@ while (dice !== 6) {
 // console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
 
 
+//////////////////////  //////////////////////
+
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+  const tip = calcTip(bills[i]);
+  tips.push(tips);
+  totals.push(tip + bills[i]);
+}
+console.log(bills, tips, totals);
+
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // sum = sum +arr[i];
+    sum += arr[i];
+  }
+  return sum / arr.length
+}
+console.log(calcAverage([2, 3, 7]));
