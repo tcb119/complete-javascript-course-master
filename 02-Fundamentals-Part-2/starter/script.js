@@ -231,26 +231,55 @@
 
 /* i-- */
 
-const jonasArray = [
-  'Jonas',
-  'Schmedtmann',
-  2037 - 1991,
-  'teacher',
-  ['Michael', 'Peter', 'Steven'],
-  true
-];
 
-for (let i = jonasArray.length - 1; i >= 0; i--) {
-  console.log(i, jonasArray[i]);
+/* While迴圈 */
+
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetition ${rep} 🏋🏻‍♂️`);
+// }
+
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`Lifting weights repetition ${rep} 🏋🏻‍♂️`);
+//   rep++;
+// }
+
+/*
+Math.trunc 是去掉小數值
+Math.random() 會出現0-1之間得數字
+*/
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log('Loop is about to end...');
 }
 
-for (let exercise = 1; exercise < 4; exercise++) {
-  console.log(`--------- Starting exercise ${exercise}`);
+/* for迴圈 與槽狀使用 */
 
-  for (let rep = 1; rep < 6; rep++) {
-    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋🏻‍♂️`);
-  }
-}
+// const jonasArray = [
+//   'Jonas',
+//   'Schmedtmann',
+//   2037 - 1991,
+//   'teacher',
+//   ['Michael', 'Peter', 'Steven'],
+//   true
+// ];
+
+// for (let i = jonasArray.length - 1; i >= 0; i--) {
+//   console.log(i, jonasArray[i]);
+// }
+
+// for (let exercise = 1; exercise < 4; exercise++) {
+//   console.log(`--------- Starting exercise ${exercise}`);
+
+//   for (let rep = 1; rep < 6; rep++) {
+//     console.log(`Exercise ${exercise}: Lifting weight repetition ${rep} 🏋🏻‍♂️`);
+//   }
+// }
 
 /* CONTINUE AND BREAK */
 
