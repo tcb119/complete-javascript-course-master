@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // function calcAge(birthYear) {
 //   const age = 2037 - birthYear;
@@ -96,3 +96,60 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+
+// this 關鍵字的用法
+// 在非嚴格模式下，this 默認指向全局對象（在瀏覽器中是 window）
+// 在嚴格模式下，this 是 undefined。
+
+console.log(this);
+
+const calcAge = function(birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
+}
+calcAge(1991);
+
+
+// 因為Arrow function 沒有this關鍵字
+// 所以他就是指向父元素 也就是全域的window 在這個例子裡
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+}
+calcAgeArrow(1980);
+
+
+// 這樣會指向 jonas object
+const jonas = {
+  year: 1991,
+  calcAge: function() {
+    console.log(this);
+    console.log(2037 - this.year);
+  }
+}
+jonas.calcAge();
+
+
+// 因為this 放在 jonas物件裡的 calcAge function
+// 這樣 matilda物件 就會指向 jonas物件裡的 calcAge function
+// 所以才會說 this這個關鍵字是動態(Dymaic) 非靜態(static)
+// 取決於你怎麼使用this
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge();
+
+// 要注意：這樣只是賦值，而不是呼叫
+// 直接在後台 在後台輸入f
+// 會顯示
+// f() {
+//   console.log(this);
+//   console.log(2037 - this.year);
+// }
+
+const f = calcAge;
+f(1911);
