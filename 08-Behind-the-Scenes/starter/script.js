@@ -296,3 +296,80 @@ console.log('Me', me);
  *    DOM（文件物件模型）是 HTML 文件的編程接口。它表示文檔的結構，
  *    允許程式動態存取和更新文檔的內容和結構。
  */
+
+
+///////////////////////////////////////
+// Primitives vs. Objects in Practice
+
+// Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference types
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+/**
+ * 如果是對同一個物件進行操作。(也就是傳同一份 adress 到 stack）
+ * 
+ * 即這邊的重點是：
+ * 改變object裡面的數值，無關let 或 const
+ * 因為對value做改變，ex: marriedJessica.lastName = 'Davis';
+ * 所產生的記憶體是放在call stack，而非heap空間。
+ */
+
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage: ', marriedJessica);
+
+
+/**
+ * 所以像這樣就會不能執行
+ * 因為這是在指向另一個記憶體空間(different adress)
+ */
+// marriedJessica = {
+//   firstName: 'David',
+// };
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: [`'Alice', 'Bob'`]
+};
+
+
+/**
+ * 使用 Object.assign()
+ * 就會可以完全複製一份新的object，而不影響到原來obejct裡面的value
+ * 
+ * 但僅限於淺拷貝(shallow copy)
+ * 如果object裏面還包上一層 object 依然拷貝不到 (deep clone)
+ * shallow copy 是拷貝first level(第一層)
+ * 而 deep clone 才是完全拷貝
+ */
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2);
+console.log('After marriage: ', jessicaCopy);
+
+/**
+ * 顯示結果會發現 family陣列並沒有被完全拷貝到
+ * 也說明了為何 Object.assign() 是淺拷貝(shallow copy)
+ * 如果要做到深拷貝，需要用到external library, like Lo-Dash
+ * 裡面就有深拷貝這樣工具
+ */
+
