@@ -68,6 +68,7 @@ const/let 也會被提升，但會被丟入TDZ初始化，直至被賦予數值
 // console.log(addArrow(2, 3));
 
 
+///////////////////////////////////////
 // //Example：為何可以的話，不要使用var來宣告變數
 // /**
 //  * 因爲var的關係，number被提升至top
@@ -155,75 +156,126 @@ const/let 也會被提升，但會被丟入TDZ初始化，直至被賦予數值
 // f(1911);
 
 
-
+///////////////////////////////////////
 // Regular Functions vs. Arrow Functions
 
 // var firstName = 'Matilda';
 
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function() {
-    console.log(this);
-    console.log(2037 - this.year);
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function() {
+//     console.log(this);
+//     console.log(2037 - this.year);
 
-  //   在 ES6 前的做法
-  //   因為引入了箭頭函數，可以更簡單地解決這個問題，
-  //   因為箭頭函數不會綁定自己的 this，而是從外部上下文繼承 this。
-  //   const self = this; /// 用self or that 來 保存 `this` 的引用
-  //   const isMillenial = function() {
-  //     console.log(self); // 使用 `self` 來引用原始的 `this`
-  //     console.log(self.year >= 1981 && self.year <= 1996);
-  //   };
-  //   isMillenial();
-  // },
+//   //   在 ES6 前的做法
+//   //   因為引入了箭頭函數，可以更簡單地解決這個問題，
+//   //   因為箭頭函數不會綁定自己的 this，而是從外部上下文繼承 this。
+//   //   const self = this; /// 用self or that 來 保存 `this` 的引用
+//   //   const isMillenial = function() {
+//   //     console.log(self); // 使用 `self` 來引用原始的 `this`
+//   //     console.log(self.year >= 1981 && self.year <= 1996);
+//   //   };
+//   //   isMillenial();
+//   // },
 
-  // 使用箭頭函式的寫法
-  // 會自動指向 jonas
-  const isMillenial = () => {
-    console.log(this); 
-    console.log(this.year >= 1981 && this.year <= 1996);
-  };
-  isMillenial();
-},
+//   // 使用箭頭函式的寫法
+//   // 會自動指向 jonas
+//   const isMillenial = () => {
+//     console.log(this); 
+//     console.log(this.year >= 1981 && this.year <= 1996);
+//   };
+//   isMillenial();
+// },
 
 
-  // greet: () => {
-  //   console.log(this);
-  //   console.log(`Hey ${this.firstName}`);
-  // },
+//   // greet: () => {
+//   //   console.log(this);
+//   //   console.log(`Hey ${this.firstName}`);
+//   // },
 
-  /**
- * jonas.greet(); 出現undefined原因，是因為他沒有this關鍵字
- * 所以會往 父領域 global 拿取資料，就成了undefined
- */
+//   /**
+//  * jonas.greet(); 出現undefined原因，是因為他沒有this關鍵字
+//  * 所以會往 父領域 global 拿取資料，就成了undefined
+//  */
 
-  greet: () => {
-    console.log(this);
-    console.log(`Hey ${this.firstName}`);
-  },
-};
-jonas.greet();
-jonas.calcAge();
+//   greet: () => {
+//     console.log(this);
+//     console.log(`Hey ${this.firstName}`);
+//   },
+// };
+// jonas.greet();
+// jonas.calcAge();
+
+// /**
+//  * 不建議使用箭頭函式，在object物件裡。
+//  * 而是使用函式宣告(一般來說，也不會對箭頭函式，使用this關鍵字)
+//  */
+
+// ///////////////////////////////////////
+// // arguments keyword
+// // 在 JavaScript 中，arguments 是一個類數組對象（array-like object），
+// // 包含了函數調用時所有傳入的參數。即使函數定義中沒有參數，arguments 也會捕捉所有傳入的值。
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addExpr(2, 5);
+// addExpr(2, 5, 8, 12);
+
+// // 跟表達 arguments 跟this一樣，只存在於 正則函數裡
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 8);
+
+
+///////////////////////////////////////
+// Objects vs. primitives
 
 /**
- * 不建議使用箭頭函式，在object物件裡。
- * 而是使用函式宣告(一般來說，也不會對箭頭函式，使用this關鍵字)
+ * 從參考圖可以了解，用let宣告 
+ * 會讓 age 與 oldAge分別指向不同的adress 存放不同的value
+ * 
+ * 而用const宣告，會定義初始物件內的內容
+ * 但可以改變裡面的reference 
+ * 這也是為什麼，改變‘friend’裡的age value
+ * 但‘me’裡的age value也一起改變了
+ * 因為他們是共用同一個adress
+ *  */
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+const friend = me;
+friend.age = 27;
+console.log('Friend:', friend);
+console.log('Me', me);
+
+/**
+ * Number
+ * String
+ * Boolean
+ * Undefined
+ * Null
+ * Symbol
+ * BigInt
+ * 
+ * 資料存在於 CALL STACK
+ * 也就是在聲明他們的執行上下文中。
+ * 
+ * Object literal
+ * Arrays
+ * Functions
+ * Many more...
+ * 
+ * 是儲存於HEAP空間
  */
-
-// arguments keyword
-// 在 JavaScript 中，arguments 是一個類數組對象（array-like object），
-// 包含了函數調用時所有傳入的參數。即使函數定義中沒有參數，arguments 也會捕捉所有傳入的值。
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
-addExpr(2, 5);
-addExpr(2, 5, 8, 12);
-
-// 跟表達 arguments 跟this一樣，只存在於 正則函數裡
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
-};
-addArrow(2, 5, 8);
