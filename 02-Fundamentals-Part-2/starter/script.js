@@ -382,6 +382,7 @@ for (let i = 0; i < jonas2.length; i++) {
 
   types.push(typeof jonas2[i]);
 }
+console.log(types);
 
 const years = [1991, 2007, 1969, 2020];
 const ages = [];
